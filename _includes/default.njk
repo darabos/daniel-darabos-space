@@ -1,0 +1,53 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+  integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+  crossorigin="anonymous">
+<style>
+body {
+  background: hsl(75, 100%, 98%);
+  color: hsl(75, 10%, 50%);
+}
+h1 {
+  color: hsl(75, 10%, 30%);
+}
+a { color: inherit; }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: hsl(75, 100%, 10%);
+    color: hsl(75, 10%, 70%);
+  }
+  h1 {
+    color: hsl(75, 10%, 90%);
+  }
+}
+
+img.wide {
+  max-width: 100%;
+  height: auto;
+}
+
+#layout {
+  position: relative;
+  left: 0;
+  padding-left: 0;
+}
+.content {
+  margin: 0 auto;
+  padding: 0 2em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.6em;
+}
+
+
+</style>
+<div id="layout">
+    <div class="content">
+{{ content | safe }}
+    </div>
+</div>
