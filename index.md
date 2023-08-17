@@ -1,8 +1,9 @@
-
-Egy energiavállalat "Te hogyan mentenéd meg a Földet?" novella pályázatára adtam be három novellát:
+Egy energiavállalat "Te hogyan mentenéd meg a Földet?" novellapályázatára adtam be három novellát:
 - [Célközönség](iras/celkozonseg)
 - [Az utolsó jegesmedve csodája](iras/az-utolso-jegesmedve-csodaja)
 - [Horizont űrhajó](iras/horizont-urhajo)
+
+[Quantum Cheese](writing/quantum-cheese), egy sci-fi novella angolul.
 
 [Mennyi](https://mennyi.darabos.space/), összeadást, szorzást gyakorló program.
 
