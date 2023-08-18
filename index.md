@@ -25,4 +25,5 @@ Flickgame játékok:
 [GitHub](https://github.com/darabos) ·
 [LinkedIn](https://www.linkedin.com/in/darabos/) ·
 [Itch](https://darabos.itch.io/) ·
+[YouTube](https://www.youtube.com/@DanielDarabos) ·
 [Steam](https://steamcommunity.com/id/cyhawk/)
