@@ -1,13 +1,15 @@
-Egy energiavállalat "Te hogyan mentenéd meg a Földet?" novellapályázatára adtam be három novellát:
-- [Célközönség](iras/celkozonseg)
-- [Az utolsó jegesmedve csodája](iras/az-utolso-jegesmedve-csodaja)
-- [Horizont űrhajó](iras/horizont-urhajo)
+[In English](english)
 
-[Quantum Cheese](writing/quantum-cheese), egy sci-fi novella angolul.
+Egy energiavállalat "Te hogyan mentenéd meg a Földet?" novellapályázatára adtam be három novellát:
+- [Célközönség](/iras/celkozonseg)
+- [Az utolsó jegesmedve csodája](/iras/az-utolso-jegesmedve-csodaja)
+- [Horizont űrhajó](/iras/horizont-urhajo)
+
+[Quantum Cheese](/writing/quantum-cheese), egy sci-fi novella angolul.
 
 [Mennyi](https://mennyi.darabos.space/), összeadást, szorzást gyakorló program.
 
-[Codenames](codenames) játékhoz sorsoló saját helyszínekkel.
+[Codenames](/codenames) játékhoz sorsoló saját helyszínekkel.
 
 [Draw45](https://draw45.darabos.space/), rajzoló program a 45-fokos szögek kedvelőinek.
 
@@ -19,4 +21,8 @@ Flickgame játékok:
 - [Rosita](https://www.flickgame.org/play.html?p=c04944095b1c1db144f8eff50dd66d8b) (2019)
 - [A gömbvadász](https://www.flickgame.org/play.html?p=a9b9f16f4fa11a685d5cd866db2f2a9c) (2023)
 
-[Mastodon](https://mastodon.online/@darabos) ♦ [GitHub](https://github.com/darabos) ♦ [LinkedIn](https://www.linkedin.com/in/darabos/) ♦ [Itch](https://darabos.itch.io/) ♦ [Steam](https://steamcommunity.com/id/cyhawk/)
+[Mastodon](https://mastodon.online/@darabos) ·
+[GitHub](https://github.com/darabos) ·
+[LinkedIn](https://www.linkedin.com/in/darabos/) ·
+[Itch](https://darabos.itch.io/) ·
+[Steam](https://steamcommunity.com/id/cyhawk/)
