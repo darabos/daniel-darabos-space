@@ -12,6 +12,8 @@ stretch: '<div class="stretch">REPEATED</div>'
 A background story for a recruiting challenge for a software engineer position at
 [Lynx Analytics](https://www.lynxanalytics.com). Some sections were repeated for multiple levels of the challenge.
 
+[Download as EPUB](/writing/quantum-cheese.epub)
+
 Daniel Darabos, October 2018
 
 # Quantum Cheese
@@ -186,7 +188,6 @@ I smiled a little despite myself. Dream big, my friend!
 ---
 
 "Yeah, okay, you've got my vote, Quarke," I said. "I got to update a couple dossiers before the
-
 election though."
 
 I was _joking!_ We did not even know who led the Registry, let alone elect them. One minute of human contact, and I was
