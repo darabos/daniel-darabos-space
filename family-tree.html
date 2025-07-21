@@ -1,0 +1,1796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>my-family-chart</title>
+  <script src="https://unpkg.com/d3@6"></script>
+  <script type="module" src="https://unpkg.com/family-chart@0.7.2"></script>
+  <link rel="stylesheet" href="https://unpkg.com/family-chart@0.7.2/dist/styles/family-chart.css">
+</head>
+<body>
+  <div id="FamilyChart" class="f3" style="width:100%;height:900px;margin:auto;background-color:rgb(33,33,33);color:#fff;"></div>
+  <script type="module">
+    
+    create(data())
+
+    function create(data) {
+      const f3Chart = f3.createChart('#FamilyChart', data)
+        .setTransitionTime(1000)
+        .setCardXSpacing(250)
+        .setCardYSpacing(150)
+        .setSingleParentEmptyCard(true, {label: 'ADD'})
+        .setShowSiblingsOfMain(true)
+        .setOrientationVertical()
+        .setSortChildrenFunction((a, b) => a.data['birthday'] === b.data['birthday'] ? 0 : a.data['birthday'] > b.data['birthday'] ? 1 : -1)
+    
+      const f3Card = f3Chart.setCard(f3.CardHtml)
+        .setCardDisplay([["first name"],["birthday","last name"]])
+        .setCardDim({})
+        .setMiniTree(true)
+        .setStyle('imageRect')
+        .setOnHoverPathToMain()
+    
+      
+      const f3EditTree = f3Chart.editTree()
+        .fixed(true)
+        .setFields(["first name","last name","birthday"])
+        .setEditFirst(true)
+        .setCardClickOpen(f3Card)
+      
+      f3EditTree.setEdit()
+    
+      f3Chart.updateTree({initial: true})
+      f3EditTree.open(f3Chart.getMainDatum())
+    
+      f3Chart.updateTree({initial: true})
+    }
+    
+    function data() {
+      return [
+        {
+          "id": "0",
+          "rels": {
+            "father": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+            "spouses": [
+              "d6ac7da7-45df-4a86-9f73-d63a8a44799f"
+            ],
+            "children": [
+              "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f",
+              "d564ca82-8c75-4f8f-bea1-4eb2ad03b188",
+              "53af3f53-1eca-439d-8454-60081a55b6e7",
+              "8753ee75-07de-4568-aaff-84f6210efc0f",
+              "5926eb42-07e0-4368-934f-409778430ecc",
+              "19fc6d67-cfcf-46e1-bfa6-35905f87eb1a",
+              "7353686c-a16f-4175-8f9b-0c6cd3247878",
+              "ca3a7203-87a8-49b4-9dc6-78ed53be1da1"
+            ],
+            "mother": "d47278d8-4adf-4113-a6b5-33c60bba4a76"
+          },
+          "data": {
+            "first name": "Mányoki Alojzia",
+            "last name": "",
+            "birthday": "1880",
+            "avatar": "",
+            "gender": "F"
+          }
+        },
+        {
+          "id": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+          "data": {
+            "gender": "M",
+            "first name": "Mányoki László",
+            "last name": "",
+            "birthday": "1842.02.25 — 1916.03.30",
+            "avatar": ""
+          },
+          "rels": {
+            "children": [
+              "0",
+              "5a5dbae0-a7cc-4984-b31a-f32db22caf0d",
+              "af89a657-1b72-44de-b5f0-b4a7862ec19f",
+              "9e259026-f3f9-4601-bdf2-8ecab0acb570",
+              "e0a51cf1-2956-4b7f-b25d-313300c73d3e"
+            ],
+            "spouses": [
+              "d47278d8-4adf-4113-a6b5-33c60bba4a76"
+            ]
+          }
+        },
+        {
+          "id": "d47278d8-4adf-4113-a6b5-33c60bba4a76",
+          "data": {
+            "gender": "F",
+            "first name": "Ambrus Katalin",
+            "last name": "",
+            "birthday": "1850 — 1918.03.18",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "1f32d6e3-5a76-431a-8dae-481396f2d696"
+            ],
+            "children": [
+              "0",
+              "5a5dbae0-a7cc-4984-b31a-f32db22caf0d",
+              "af89a657-1b72-44de-b5f0-b4a7862ec19f",
+              "9e259026-f3f9-4601-bdf2-8ecab0acb570",
+              "e0a51cf1-2956-4b7f-b25d-313300c73d3e"
+            ]
+          }
+        },
+        {
+          "id": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+          "data": {
+            "gender": "M",
+            "first name": "Mészáros Lajos",
+            "last name": "",
+            "birthday": "1872.10.12",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "0"
+            ],
+            "children": [
+              "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f",
+              "d564ca82-8c75-4f8f-bea1-4eb2ad03b188",
+              "53af3f53-1eca-439d-8454-60081a55b6e7",
+              "8753ee75-07de-4568-aaff-84f6210efc0f",
+              "5926eb42-07e0-4368-934f-409778430ecc",
+              "19fc6d67-cfcf-46e1-bfa6-35905f87eb1a",
+              "7353686c-a16f-4175-8f9b-0c6cd3247878",
+              "ca3a7203-87a8-49b4-9dc6-78ed53be1da1"
+            ],
+            "father": "efeb9952-0908-491e-bddf-2b2f39232e8b",
+            "mother": "75607a2c-d1ec-4d73-b225-2a84d306e41b"
+          }
+        },
+        {
+          "id": "efeb9952-0908-491e-bddf-2b2f39232e8b",
+          "data": {
+            "gender": "M",
+            "first name": "Mészáros János",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "children": [
+              "d6ac7da7-45df-4a86-9f73-d63a8a44799f"
+            ],
+            "spouses": [
+              "75607a2c-d1ec-4d73-b225-2a84d306e41b"
+            ]
+          }
+        },
+        {
+          "id": "75607a2c-d1ec-4d73-b225-2a84d306e41b",
+          "data": {
+            "gender": "F",
+            "first name": "Takács Mária",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "children": [
+              "d6ac7da7-45df-4a86-9f73-d63a8a44799f"
+            ],
+            "spouses": [
+              "efeb9952-0908-491e-bddf-2b2f39232e8b"
+            ]
+          }
+        },
+        {
+          "id": "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Mariska",
+            "last name": "",
+            "birthday": "1899",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0",
+            "spouses": [
+              "33b6b66a-6312-4302-b451-ab2c04cc9a71",
+              "49f1c404-e83d-4b75-8db4-d89b6bbdfcf7",
+              "bc68aa55-6cf5-4f2e-bfcd-78d9e932f148"
+            ],
+            "children": [
+              "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a",
+              "9341aef4-5c58-4d0f-a7e6-8745c457d872"
+            ]
+          }
+        },
+        {
+          "id": "d564ca82-8c75-4f8f-bea1-4eb2ad03b188",
+          "data": {
+            "gender": "M",
+            "first name": "Mészáros László",
+            "last name": "",
+            "birthday": "1901.07.05",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0",
+            "spouses": [],
+            "children": [
+              "d2f93b20-7c71-4572-97c3-1f0878ca2fbb"
+            ]
+          }
+        },
+        {
+          "id": "53af3f53-1eca-439d-8454-60081a55b6e7",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Erzsébet",
+            "last name": "",
+            "birthday": "1906.09.24",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0",
+            "spouses": [],
+            "children": [
+              "b0a1f101-307e-4faa-ac6a-76432ebe4270"
+            ]
+          }
+        },
+        {
+          "id": "8753ee75-07de-4568-aaff-84f6210efc0f",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Lujza",
+            "last name": "\"Lujzika\"",
+            "birthday": "1905.04.01",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "0",
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "spouses": [
+              "ff3ae4e6-e5f5-4feb-b900-b57192feab75"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "5926eb42-07e0-4368-934f-409778430ecc",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Antónia",
+            "last name": "\"Toncsika\"",
+            "birthday": "1908.03.17 — 1930.07.04",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0"
+          }
+        },
+        {
+          "id": "19fc6d67-cfcf-46e1-bfa6-35905f87eb1a",
+          "data": {
+            "gender": "M",
+            "first name": "Mészáros Lajos",
+            "last name": "",
+            "birthday": "1909.06.10 — 1926.07.06",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0"
+          }
+        },
+        {
+          "id": "7353686c-a16f-4175-8f9b-0c6cd3247878",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Terézia",
+            "last name": "\"Trudi\"",
+            "birthday": "1915.06.30",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "mother": "0"
+          }
+        },
+        {
+          "id": "ca3a7203-87a8-49b4-9dc6-78ed53be1da1",
+          "data": {
+            "gender": "F",
+            "first name": "Mészáros Juliska",
+            "last name": "",
+            "birthday": "1917.08.21",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "0",
+            "father": "d6ac7da7-45df-4a86-9f73-d63a8a44799f",
+            "spouses": [
+              "e73d8f41-a495-4c0d-b74d-c10f620b002a"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "33b6b66a-6312-4302-b451-ab2c04cc9a71",
+          "data": {
+            "gender": "M",
+            "first name": "Petrás Alajos",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f"
+            ],
+            "children": [
+              "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a"
+            ]
+          }
+        },
+        {
+          "id": "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a",
+          "data": {
+            "gender": "F",
+            "first name": "Petrás Sára",
+            "last name": "",
+            "birthday": "1923.08.03",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f",
+            "father": "33b6b66a-6312-4302-b451-ab2c04cc9a71",
+            "spouses": [
+              "b8db6ab1-f095-47e2-9f96-f353ff45b7d9",
+              "64c1ed1e-b4cb-4cab-9d44-48723975e03e"
+            ],
+            "children": [
+              "5023acf4-3d59-4c72-8997-2011575f1d26"
+            ]
+          }
+        },
+        {
+          "id": "5023acf4-3d59-4c72-8997-2011575f1d26",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Ferenc",
+            "last name": "",
+            "birthday": "1942.05.08 — 2002.04.14",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a",
+            "father": "b8db6ab1-f095-47e2-9f96-f353ff45b7d9",
+            "spouses": [
+              "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4"
+            ],
+            "children": [
+              "828ba5dc-e2ec-4faf-b29e-51ea445f069b",
+              "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb",
+              "c5c8cf61-5dcf-468c-95d6-a33ab4afebba",
+              "eb8265f2-0f0b-43d9-b4a1-0c52b0e46c6e"
+            ]
+          }
+        },
+        {
+          "id": "b8db6ab1-f095-47e2-9f96-f353ff45b7d9",
+          "data": {
+            "gender": "M",
+            "first name": "?",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a"
+            ],
+            "children": [
+              "5023acf4-3d59-4c72-8997-2011575f1d26"
+            ]
+          }
+        },
+        {
+          "id": "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Erzsébet",
+            "last name": "",
+            "birthday": "1957.05.06",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "5023acf4-3d59-4c72-8997-2011575f1d26"
+            ],
+            "children": [
+              "828ba5dc-e2ec-4faf-b29e-51ea445f069b",
+              "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb"
+            ],
+            "father": "e219e9bc-a41a-459f-a3cb-9982769b018b",
+            "mother": "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff"
+          }
+        },
+        {
+          "id": "828ba5dc-e2ec-4faf-b29e-51ea445f069b",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Dániel",
+            "last name": "",
+            "birthday": "1981.09.14",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "5023acf4-3d59-4c72-8997-2011575f1d26",
+            "mother": "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4",
+            "spouses": [
+              "2db36360-3417-446f-b39b-97c47aa18350"
+            ],
+            "children": [
+              "fa6403fa-ccec-4b1f-8d34-0ef668dfd91d",
+              "60468fa6-b4aa-462f-a571-72786944632d"
+            ]
+          }
+        },
+        {
+          "id": "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb",
+          "data": {
+            "gender": "F",
+            "first name": "Darabos Dóra",
+            "last name": "",
+            "birthday": "1983.10.28",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4",
+            "father": "5023acf4-3d59-4c72-8997-2011575f1d26",
+            "spouses": [
+              "cfe7e5aa-d206-4d58-8bb2-971a26861ba6"
+            ],
+            "children": [
+              "1ab08a40-175b-4c5b-aa40-5a9b956fda75",
+              "aeeb258c-1321-4065-b2d2-0535a50abb5e"
+            ]
+          }
+        },
+        {
+          "id": "2db36360-3417-446f-b39b-97c47aa18350",
+          "data": {
+            "gender": "F",
+            "first name": "Szabó Beáta",
+            "last name": "",
+            "birthday": "1979.12.17",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "828ba5dc-e2ec-4faf-b29e-51ea445f069b"
+            ],
+            "children": [
+              "fa6403fa-ccec-4b1f-8d34-0ef668dfd91d",
+              "60468fa6-b4aa-462f-a571-72786944632d"
+            ],
+            "father": "20f48474-9157-46bf-8a06-5efdb060053c",
+            "mother": "457061c1-f49e-449d-977b-e9a85995ae4c"
+          }
+        },
+        {
+          "id": "fa6403fa-ccec-4b1f-8d34-0ef668dfd91d",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Félix",
+            "last name": "",
+            "birthday": "2014.05.04",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "828ba5dc-e2ec-4faf-b29e-51ea445f069b",
+            "mother": "2db36360-3417-446f-b39b-97c47aa18350"
+          }
+        },
+        {
+          "id": "60468fa6-b4aa-462f-a571-72786944632d",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Olivér",
+            "last name": "",
+            "birthday": "2016.06.03",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "2db36360-3417-446f-b39b-97c47aa18350",
+            "father": "828ba5dc-e2ec-4faf-b29e-51ea445f069b"
+          }
+        },
+        {
+          "id": "cfe7e5aa-d206-4d58-8bb2-971a26861ba6",
+          "data": {
+            "gender": "M",
+            "first name": "Szabó Ádám",
+            "last name": "",
+            "birthday": "1978.08.08",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb"
+            ],
+            "children": [
+              "1ab08a40-175b-4c5b-aa40-5a9b956fda75",
+              "aeeb258c-1321-4065-b2d2-0535a50abb5e"
+            ]
+          }
+        },
+        {
+          "id": "1ab08a40-175b-4c5b-aa40-5a9b956fda75",
+          "data": {
+            "gender": "F",
+            "first name": "Szabó Luca",
+            "last name": "",
+            "birthday": "2010.07.16",
+            "avatar": ""
+          },
+          "rels": {
+            "father": "cfe7e5aa-d206-4d58-8bb2-971a26861ba6",
+            "mother": "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb"
+          }
+        },
+        {
+          "id": "aeeb258c-1321-4065-b2d2-0535a50abb5e",
+          "data": {
+            "gender": "F",
+            "first name": "Szabó Szófia",
+            "last name": "",
+            "birthday": "2012.03.28",
+            "avatar": ""
+          },
+          "rels": {
+            "mother": "2671e2f3-0d3d-4712-9e43-c3bbcf68a7bb",
+            "father": "cfe7e5aa-d206-4d58-8bb2-971a26861ba6"
+          }
+        },
+        {
+          "id": "49f1c404-e83d-4b75-8db4-d89b6bbdfcf7",
+          "data": {
+            "gender": "M",
+            "first name": "Kárpáti József",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "bc68aa55-6cf5-4f2e-bfcd-78d9e932f148",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Lajos",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f"
+            ],
+            "children": [
+              "9341aef4-5c58-4d0f-a7e6-8745c457d872"
+            ]
+          }
+        },
+        {
+          "id": "64c1ed1e-b4cb-4cab-9d44-48723975e03e",
+          "data": {
+            "gender": "M",
+            "first name": "Dudás Ferenc",
+            "last name": "",
+            "birthday": "",
+            "avatar": ""
+          },
+          "rels": {
+            "spouses": [
+              "9cb2cff4-f121-4aa4-ab7b-537fa0b7e94a"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "20f48474-9157-46bf-8a06-5efdb060053c",
+          "data": {
+            "gender": "M",
+            "first name": "Szabó János",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "2db36360-3417-446f-b39b-97c47aa18350"
+            ],
+            "spouses": [
+              "457061c1-f49e-449d-977b-e9a85995ae4c"
+            ]
+          }
+        },
+        {
+          "id": "457061c1-f49e-449d-977b-e9a85995ae4c",
+          "data": {
+            "gender": "F",
+            "first name": "Győri Zsuzsa",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "2db36360-3417-446f-b39b-97c47aa18350"
+            ],
+            "spouses": [
+              "20f48474-9157-46bf-8a06-5efdb060053c"
+            ],
+            "father": "a16ba058-f1b2-4ff4-b26e-c87bb547da44",
+            "mother": "d43e4985-30c2-42a0-aa1c-1d4c00be5060"
+          }
+        },
+        {
+          "id": "5a5dbae0-a7cc-4984-b31a-f32db22caf0d",
+          "data": {
+            "gender": "M",
+            "first name": "Mányoki László",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+            "mother": "d47278d8-4adf-4113-a6b5-33c60bba4a76",
+            "spouses": [
+              "3ddd3e2c-5e65-4aa4-9199-f8c3635508de"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "3ddd3e2c-5e65-4aa4-9199-f8c3635508de",
+          "data": {
+            "gender": "F",
+            "first name": "Bakora Erzsébet",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "5a5dbae0-a7cc-4984-b31a-f32db22caf0d"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "af89a657-1b72-44de-b5f0-b4a7862ec19f",
+          "data": {
+            "gender": "M",
+            "first name": "Mányoki Ferenc",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+            "mother": "d47278d8-4adf-4113-a6b5-33c60bba4a76",
+            "spouses": [
+              "9afa4405-39e3-4cb8-b123-f42632da5146"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "9afa4405-39e3-4cb8-b123-f42632da5146",
+          "data": {
+            "gender": "F",
+            "first name": "Fischer Emma",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "af89a657-1b72-44de-b5f0-b4a7862ec19f"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "9e259026-f3f9-4601-bdf2-8ecab0acb570",
+          "data": {
+            "gender": "M",
+            "first name": "Mányoki Kálmán",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+            "mother": "d47278d8-4adf-4113-a6b5-33c60bba4a76",
+            "spouses": [
+              "48fc3514-850f-4911-891d-77ae6676f9d2"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "48fc3514-850f-4911-891d-77ae6676f9d2",
+          "data": {
+            "gender": "F",
+            "first name": "Komáromy Mariska",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "9e259026-f3f9-4601-bdf2-8ecab0acb570"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "e0a51cf1-2956-4b7f-b25d-313300c73d3e",
+          "data": {
+            "gender": "M",
+            "first name": "Mányoki Béla",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "1f32d6e3-5a76-431a-8dae-481396f2d696",
+            "mother": "d47278d8-4adf-4113-a6b5-33c60bba4a76",
+            "spouses": [
+              "585d2f10-de7d-4b22-b042-0ce83dadfe09"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "585d2f10-de7d-4b22-b042-0ce83dadfe09",
+          "data": {
+            "gender": "F",
+            "first name": "Gazdag Katica",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "e0a51cf1-2956-4b7f-b25d-313300c73d3e"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "e219e9bc-a41a-459f-a3cb-9982769b018b",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Győző",
+            "last name": "",
+            "birthday": "1927.12.21 — 2010.12"
+          },
+          "rels": {
+            "children": [
+              "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4"
+            ],
+            "spouses": [
+              "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff"
+            ],
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+            "mother": "d6bdf08d-5b02-46f5-a0a2-c1e7cc8b2704"
+          }
+        },
+        {
+          "id": "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff",
+          "data": {
+            "gender": "F",
+            "first name": "Próder Erzsébet",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "e94cc8b7-71d3-4c13-9c01-3bb77aa84fb4"
+            ],
+            "spouses": [
+              "e219e9bc-a41a-459f-a3cb-9982769b018b",
+              "0d1b5411-7bd8-45cc-bd33-829b0551ecb4"
+            ],
+            "father": "4c4939c5-e494-42ca-8dbb-279e803beec2",
+            "mother": "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c"
+          }
+        },
+        {
+          "id": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Béla",
+            "last name": "",
+            "birthday": "1897 — 1962"
+          },
+          "rels": {
+            "children": [
+              "e219e9bc-a41a-459f-a3cb-9982769b018b",
+              "439fb212-2355-4dac-9652-92b08304fff6",
+              "4429f6fd-e3bd-4401-8c83-6479c34e9982",
+              "416de07c-046f-4f63-bee7-2a085c57afde",
+              "1f251549-a60b-4df8-b795-d6f2e0fa7fcb",
+              "41adc340-4bc4-4532-9f3f-96c0d67d5da2"
+            ],
+            "spouses": [
+              "d6bdf08d-5b02-46f5-a0a2-c1e7cc8b2704",
+              "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366"
+            ]
+          }
+        },
+        {
+          "id": "d6bdf08d-5b02-46f5-a0a2-c1e7cc8b2704",
+          "data": {
+            "gender": "F",
+            "first name": "Gaál Margit",
+            "last name": "",
+            "birthday": "1906 – 1935"
+          },
+          "rels": {
+            "children": [
+              "e219e9bc-a41a-459f-a3cb-9982769b018b",
+              "439fb212-2355-4dac-9652-92b08304fff6"
+            ],
+            "spouses": [
+              "b45bae31-0e4b-4843-a579-a2e08bde723d"
+            ]
+          }
+        },
+        {
+          "id": "0d1b5411-7bd8-45cc-bd33-829b0551ecb4",
+          "data": {
+            "gender": "M",
+            "first name": "Szabó Szilárd",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff"
+            ],
+            "children": [
+              "d83ddf15-6f14-4d7f-bdc2-6dc375d9ca86"
+            ]
+          }
+        },
+        {
+          "id": "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366",
+          "data": {
+            "gender": "F",
+            "first name": "Gaál Anna",
+            "last name": "",
+            "birthday": "1913"
+          },
+          "rels": {
+            "spouses": [
+              "b45bae31-0e4b-4843-a579-a2e08bde723d"
+            ],
+            "children": [
+              "4429f6fd-e3bd-4401-8c83-6479c34e9982",
+              "416de07c-046f-4f63-bee7-2a085c57afde",
+              "1f251549-a60b-4df8-b795-d6f2e0fa7fcb",
+              "41adc340-4bc4-4532-9f3f-96c0d67d5da2"
+            ]
+          }
+        },
+        {
+          "id": "439fb212-2355-4dac-9652-92b08304fff6",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Piroska",
+            "last name": "",
+            "birthday": "1930.01.01"
+          },
+          "rels": {
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+            "mother": "d6bdf08d-5b02-46f5-a0a2-c1e7cc8b2704",
+            "spouses": [
+              "a4762780-4600-4926-a17d-04f2a07ce7c5"
+            ],
+            "children": [
+              "547647c0-3e93-48e1-94f7-47369b4bd643",
+              "2f87bb53-0b0a-4c5d-9307-8b59e982a2c7",
+              "d05585ee-7350-419e-a677-a0178b57c33a"
+            ]
+          }
+        },
+        {
+          "id": "4429f6fd-e3bd-4401-8c83-6479c34e9982",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Béla",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+            "mother": "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366",
+            "spouses": [],
+            "children": [
+              "b592cda7-9751-4aaf-827b-81c6c19d866e",
+              "0c40e261-5f0c-455a-ad1a-1e468bcdfa63",
+              "bda7e570-5880-4015-9050-870ad6ee8010",
+              "dbcd51ef-f214-4b79-8ecf-61835c1ba417"
+            ]
+          }
+        },
+        {
+          "id": "416de07c-046f-4f63-bee7-2a085c57afde",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Árpád",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366",
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+            "spouses": [
+              "ba16c26b-29b0-4ddb-8bfe-4a040683a3a5",
+              "7a40790e-c754-4c63-9331-a60aa47833d6"
+            ],
+            "children": [
+              "0cf84c70-4602-4cfb-b487-913afb04f8f7",
+              "f3719034-be8d-4517-b1bd-ced300ebd3a1"
+            ]
+          }
+        },
+        {
+          "id": "1f251549-a60b-4df8-b795-d6f2e0fa7fcb",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Péter",
+            "last name": "",
+            "birthday": "1945.06.29"
+          },
+          "rels": {
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d",
+            "mother": "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366",
+            "spouses": [],
+            "children": [
+              "43ec32e4-9386-4178-90b1-cb8d20349357",
+              "55c4edd3-51f8-43ab-ae2c-32112d0bd4db"
+            ]
+          }
+        },
+        {
+          "id": "41adc340-4bc4-4532-9f3f-96c0d67d5da2",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Anna",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "943b3ebb-6ffd-4e96-a7d6-f825b8f2d366",
+            "father": "b45bae31-0e4b-4843-a579-a2e08bde723d"
+          }
+        },
+        {
+          "id": "4c4939c5-e494-42ca-8dbb-279e803beec2",
+          "data": {
+            "gender": "M",
+            "first name": "Próder István",
+            "last name": "",
+            "birthday": "1901.12.28 — 1985.09.01"
+          },
+          "rels": {
+            "children": [
+              "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff",
+              "aa738b12-141b-44b6-8f91-1228d17d4a09"
+            ],
+            "spouses": [
+              "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c"
+            ],
+            "father": "512cf6d3-a847-4d5f-824e-a11dbdcb0c14",
+            "mother": "2336b022-46af-4bc5-8088-fa510bdd687a"
+          }
+        },
+        {
+          "id": "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c",
+          "data": {
+            "gender": "F",
+            "first name": "Kulcsár Julianna",
+            "last name": "",
+            "birthday": "1903.09.12 — 1993.08.10"
+          },
+          "rels": {
+            "children": [
+              "eb582ac8-dfc0-43b3-ac41-81de7bcef3ff",
+              "aa738b12-141b-44b6-8f91-1228d17d4a09"
+            ],
+            "spouses": [
+              "4c4939c5-e494-42ca-8dbb-279e803beec2"
+            ],
+            "father": "80526df9-1d5a-4c1b-bb71-736543205469",
+            "mother": "964c2b6d-3d67-44c8-9b6e-a267f091febb"
+          }
+        },
+        {
+          "id": "512cf6d3-a847-4d5f-824e-a11dbdcb0c14",
+          "data": {
+            "gender": "M",
+            "first name": "Próder István",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "4c4939c5-e494-42ca-8dbb-279e803beec2",
+              "18855416-07c5-4c00-bc22-b0eccb145ccc",
+              "b7230547-d25a-441d-866a-42f2a55bf1d4"
+            ],
+            "spouses": [
+              "2336b022-46af-4bc5-8088-fa510bdd687a"
+            ]
+          }
+        },
+        {
+          "id": "2336b022-46af-4bc5-8088-fa510bdd687a",
+          "data": {
+            "gender": "F",
+            "first name": "Góger Irma",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "4c4939c5-e494-42ca-8dbb-279e803beec2",
+              "18855416-07c5-4c00-bc22-b0eccb145ccc",
+              "b7230547-d25a-441d-866a-42f2a55bf1d4"
+            ],
+            "spouses": [
+              "512cf6d3-a847-4d5f-824e-a11dbdcb0c14"
+            ]
+          }
+        },
+        {
+          "id": "aa738b12-141b-44b6-8f91-1228d17d4a09",
+          "data": {
+            "gender": "F",
+            "first name": "Próder Mária",
+            "last name": "\"Marica\"",
+            "birthday": "1926.11"
+          },
+          "rels": {
+            "mother": "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c",
+            "father": "4c4939c5-e494-42ca-8dbb-279e803beec2",
+            "spouses": [
+              "35b07dd7-8e77-4131-a1f5-4fad30d5c9ea"
+            ],
+            "children": [
+              "90d2b129-fe6b-47c9-b916-f34a531ef2c4",
+              "d5423b34-5536-4ec3-b615-936831462b98",
+              "c9162996-4beb-48f4-9f44-1b5efccb55f1",
+              "a5b192d6-0dde-4f62-bcb8-6b3c6ee20974"
+            ]
+          }
+        },
+        {
+          "id": "18855416-07c5-4c00-bc22-b0eccb145ccc",
+          "data": {
+            "gender": "F",
+            "first name": "Próder Irma",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "512cf6d3-a847-4d5f-824e-a11dbdcb0c14",
+            "mother": "2336b022-46af-4bc5-8088-fa510bdd687a",
+            "spouses": [
+              "1c2d0911-1504-48eb-afa5-61e6f233d4a5"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "b7230547-d25a-441d-866a-42f2a55bf1d4",
+          "data": {
+            "gender": "M",
+            "first name": "Próder László",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "2336b022-46af-4bc5-8088-fa510bdd687a",
+            "father": "512cf6d3-a847-4d5f-824e-a11dbdcb0c14"
+          }
+        },
+        {
+          "id": "80526df9-1d5a-4c1b-bb71-736543205469",
+          "data": {
+            "gender": "M",
+            "first name": "Kulcsár József",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c",
+              "22fe1147-9265-4844-8167-2d0d574bf97a",
+              "d8786b03-ebdc-4294-8084-9e4436716e0d"
+            ],
+            "spouses": [
+              "964c2b6d-3d67-44c8-9b6e-a267f091febb"
+            ]
+          }
+        },
+        {
+          "id": "964c2b6d-3d67-44c8-9b6e-a267f091febb",
+          "data": {
+            "gender": "F",
+            "first name": "Sárik Karolin",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "d6cac008-6dd8-4473-aaf9-cfdaaaa3230c",
+              "22fe1147-9265-4844-8167-2d0d574bf97a",
+              "d8786b03-ebdc-4294-8084-9e4436716e0d"
+            ],
+            "spouses": [
+              "80526df9-1d5a-4c1b-bb71-736543205469"
+            ]
+          }
+        },
+        {
+          "id": "22fe1147-9265-4844-8167-2d0d574bf97a",
+          "data": {
+            "gender": "F",
+            "first name": "Kulcsár Mária",
+            "last name": "\"Köri\"",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "80526df9-1d5a-4c1b-bb71-736543205469",
+            "mother": "964c2b6d-3d67-44c8-9b6e-a267f091febb",
+            "spouses": [
+              "f049139e-e8fb-439d-8f47-1ca413e75f47"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "d8786b03-ebdc-4294-8084-9e4436716e0d",
+          "data": {
+            "gender": "M",
+            "first name": "Kulcsár József",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "964c2b6d-3d67-44c8-9b6e-a267f091febb",
+            "father": "80526df9-1d5a-4c1b-bb71-736543205469"
+          }
+        },
+        {
+          "id": "f049139e-e8fb-439d-8f47-1ca413e75f47",
+          "data": {
+            "gender": "M",
+            "first name": "Bodrogi János",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "22fe1147-9265-4844-8167-2d0d574bf97a"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "9341aef4-5c58-4d0f-a7e6-8745c457d872",
+          "data": {
+            "gender": "F",
+            "first name": "Darabos Ildikó",
+            "last name": "",
+            "birthday": "1945"
+          },
+          "rels": {
+            "mother": "779b8a49-6fdb-4ca6-b1d4-5c4b9c21fc8f",
+            "father": "bc68aa55-6cf5-4f2e-bfcd-78d9e932f148"
+          }
+        },
+        {
+          "id": "d2f93b20-7c71-4572-97c3-1f0878ca2fbb",
+          "data": {
+            "gender": "F",
+            "first name": "Magdi néni",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "d564ca82-8c75-4f8f-bea1-4eb2ad03b188"
+          }
+        },
+        {
+          "id": "e73d8f41-a495-4c0d-b74d-c10f620b002a",
+          "data": {
+            "gender": "M",
+            "first name": "Nagy Mackó Misi",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "ca3a7203-87a8-49b4-9dc6-78ed53be1da1"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "b0a1f101-307e-4faa-ac6a-76432ebe4270",
+          "data": {
+            "gender": "F",
+            "first name": "Szávay Orsolya",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "53af3f53-1eca-439d-8454-60081a55b6e7"
+          }
+        },
+        {
+          "id": "ff3ae4e6-e5f5-4feb-b900-b57192feab75",
+          "data": {
+            "gender": "M",
+            "first name": "Zsembery Gyula",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "8753ee75-07de-4568-aaff-84f6210efc0f"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "a4762780-4600-4926-a17d-04f2a07ce7c5",
+          "data": {
+            "gender": "M",
+            "first name": "Markovics Károly",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "439fb212-2355-4dac-9652-92b08304fff6"
+            ],
+            "children": [
+              "547647c0-3e93-48e1-94f7-47369b4bd643",
+              "2f87bb53-0b0a-4c5d-9307-8b59e982a2c7",
+              "d05585ee-7350-419e-a677-a0178b57c33a"
+            ]
+          }
+        },
+        {
+          "id": "547647c0-3e93-48e1-94f7-47369b4bd643",
+          "data": {
+            "gender": "F",
+            "first name": "Markovics Judit",
+            "last name": "",
+            "birthday": "1954"
+          },
+          "rels": {
+            "father": "a4762780-4600-4926-a17d-04f2a07ce7c5",
+            "mother": "439fb212-2355-4dac-9652-92b08304fff6"
+          }
+        },
+        {
+          "id": "2f87bb53-0b0a-4c5d-9307-8b59e982a2c7",
+          "data": {
+            "gender": "M",
+            "first name": "Markovics László",
+            "last name": "",
+            "birthday": "1956"
+          },
+          "rels": {
+            "mother": "439fb212-2355-4dac-9652-92b08304fff6",
+            "father": "a4762780-4600-4926-a17d-04f2a07ce7c5"
+          }
+        },
+        {
+          "id": "d05585ee-7350-419e-a677-a0178b57c33a",
+          "data": {
+            "gender": "M",
+            "first name": "Markovics Károly",
+            "last name": "\"Karesz\"",
+            "birthday": "1963"
+          },
+          "rels": {
+            "father": "a4762780-4600-4926-a17d-04f2a07ce7c5",
+            "mother": "439fb212-2355-4dac-9652-92b08304fff6"
+          }
+        },
+        {
+          "id": "b592cda7-9751-4aaf-827b-81c6c19d866e",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Attila",
+            "last name": "",
+            "birthday": "1965.09"
+          },
+          "rels": {
+            "father": "4429f6fd-e3bd-4401-8c83-6479c34e9982"
+          }
+        },
+        {
+          "id": "0c40e261-5f0c-455a-ad1a-1e468bcdfa63",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Zsolt",
+            "last name": "",
+            "birthday": "1965.09"
+          },
+          "rels": {
+            "father": "4429f6fd-e3bd-4401-8c83-6479c34e9982"
+          }
+        },
+        {
+          "id": "bda7e570-5880-4015-9050-870ad6ee8010",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Csaba",
+            "last name": "",
+            "birthday": "1972"
+          },
+          "rels": {
+            "father": "4429f6fd-e3bd-4401-8c83-6479c34e9982"
+          }
+        },
+        {
+          "id": "dbcd51ef-f214-4b79-8ecf-61835c1ba417",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Balázs",
+            "last name": "",
+            "birthday": "1986"
+          },
+          "rels": {
+            "father": "4429f6fd-e3bd-4401-8c83-6479c34e9982"
+          }
+        },
+        {
+          "id": "c5c8cf61-5dcf-468c-95d6-a33ab4afebba",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Péter",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "5023acf4-3d59-4c72-8997-2011575f1d26"
+          }
+        },
+        {
+          "id": "eb8265f2-0f0b-43d9-b4a1-0c52b0e46c6e",
+          "data": {
+            "gender": "M",
+            "first name": "Darabos Miklós",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "5023acf4-3d59-4c72-8997-2011575f1d26"
+          }
+        },
+        {
+          "id": "ba16c26b-29b0-4ddb-8bfe-4a040683a3a5",
+          "data": {
+            "gender": "F",
+            "first name": "?",
+            "last name": "",
+            "birthday": "1979"
+          },
+          "rels": {
+            "spouses": [
+              "416de07c-046f-4f63-bee7-2a085c57afde"
+            ],
+            "children": [
+              "0cf84c70-4602-4cfb-b487-913afb04f8f7",
+              "f3719034-be8d-4517-b1bd-ced300ebd3a1"
+            ]
+          }
+        },
+        {
+          "id": "0cf84c70-4602-4cfb-b487-913afb04f8f7",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Árpád",
+            "last name": "",
+            "birthday": "1975.10.07"
+          },
+          "rels": {
+            "father": "416de07c-046f-4f63-bee7-2a085c57afde",
+            "mother": "ba16c26b-29b0-4ddb-8bfe-4a040683a3a5",
+            "spouses": [],
+            "children": [
+              "03e538af-0f36-45cc-8fed-d14c3aebf919",
+              "b8152b6f-59e2-4370-82df-21ffaf36c54e"
+            ]
+          }
+        },
+        {
+          "id": "f3719034-be8d-4517-b1bd-ced300ebd3a1",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Tamás",
+            "last name": "",
+            "birthday": "1977.11.08"
+          },
+          "rels": {
+            "mother": "ba16c26b-29b0-4ddb-8bfe-4a040683a3a5",
+            "father": "416de07c-046f-4f63-bee7-2a085c57afde"
+          }
+        },
+        {
+          "id": "7a40790e-c754-4c63-9331-a60aa47833d6",
+          "data": {
+            "gender": "F",
+            "first name": "Málovics Margit",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "416de07c-046f-4f63-bee7-2a085c57afde"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "43ec32e4-9386-4178-90b1-cb8d20349357",
+          "data": {
+            "gender": "M",
+            "first name": "Magyar Péter",
+            "last name": "",
+            "birthday": "1974.01.19"
+          },
+          "rels": {
+            "father": "1f251549-a60b-4df8-b795-d6f2e0fa7fcb"
+          }
+        },
+        {
+          "id": "55c4edd3-51f8-43ab-ae2c-32112d0bd4db",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Csilla",
+            "last name": "",
+            "birthday": "1975"
+          },
+          "rels": {
+            "father": "1f251549-a60b-4df8-b795-d6f2e0fa7fcb",
+            "spouses": [
+              "afed10e1-a7f6-4bbd-8686-0cb0a8a647dc"
+            ],
+            "children": [
+              "1aafc1ad-25e4-440b-bbad-e2f10c96cf49",
+              "18bedd9c-78e6-47d5-83c4-d329b1a9b0a7"
+            ]
+          }
+        },
+        {
+          "id": "afed10e1-a7f6-4bbd-8686-0cb0a8a647dc",
+          "data": {
+            "gender": "M",
+            "first name": "Lanszki István",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "55c4edd3-51f8-43ab-ae2c-32112d0bd4db"
+            ],
+            "children": [
+              "1aafc1ad-25e4-440b-bbad-e2f10c96cf49",
+              "18bedd9c-78e6-47d5-83c4-d329b1a9b0a7"
+            ]
+          }
+        },
+        {
+          "id": "1aafc1ad-25e4-440b-bbad-e2f10c96cf49",
+          "data": {
+            "gender": "M",
+            "first name": "Lanszki Péter",
+            "last name": "",
+            "birthday": "2004"
+          },
+          "rels": {
+            "father": "afed10e1-a7f6-4bbd-8686-0cb0a8a647dc",
+            "mother": "55c4edd3-51f8-43ab-ae2c-32112d0bd4db"
+          }
+        },
+        {
+          "id": "18bedd9c-78e6-47d5-83c4-d329b1a9b0a7",
+          "data": {
+            "gender": "F",
+            "first name": "Lanszki Dóra",
+            "last name": "",
+            "birthday": "2002"
+          },
+          "rels": {
+            "mother": "55c4edd3-51f8-43ab-ae2c-32112d0bd4db",
+            "father": "afed10e1-a7f6-4bbd-8686-0cb0a8a647dc"
+          }
+        },
+        {
+          "id": "03e538af-0f36-45cc-8fed-d14c3aebf919",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Dalma",
+            "last name": "",
+            "birthday": "2016.09.04"
+          },
+          "rels": {
+            "father": "0cf84c70-4602-4cfb-b487-913afb04f8f7"
+          }
+        },
+        {
+          "id": "b8152b6f-59e2-4370-82df-21ffaf36c54e",
+          "data": {
+            "gender": "F",
+            "first name": "Magyar Flóra",
+            "last name": "",
+            "birthday": "2014.10.16"
+          },
+          "rels": {
+            "father": "0cf84c70-4602-4cfb-b487-913afb04f8f7"
+          }
+        },
+        {
+          "id": "1c2d0911-1504-48eb-afa5-61e6f233d4a5",
+          "data": {
+            "gender": "M",
+            "first name": "Veréb Károly",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "18855416-07c5-4c00-bc22-b0eccb145ccc"
+            ],
+            "children": []
+          }
+        },
+        {
+          "id": "a16ba058-f1b2-4ff4-b26e-c87bb547da44",
+          "data": {
+            "gender": "M",
+            "first name": "Győri Ferenc",
+            "last name": "“Győri Táti”",
+            "birthday": "1924.09.10"
+          },
+          "rels": {
+            "children": [
+              "457061c1-f49e-449d-977b-e9a85995ae4c",
+              "fccdf9f9-49c6-4c15-ba17-78ae18f30b15"
+            ],
+            "spouses": [
+              "d43e4985-30c2-42a0-aa1c-1d4c00be5060"
+            ]
+          }
+        },
+        {
+          "id": "d43e4985-30c2-42a0-aa1c-1d4c00be5060",
+          "data": {
+            "gender": "F",
+            "first name": "Réti Mária",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "children": [
+              "457061c1-f49e-449d-977b-e9a85995ae4c",
+              "fccdf9f9-49c6-4c15-ba17-78ae18f30b15"
+            ],
+            "spouses": [
+              "a16ba058-f1b2-4ff4-b26e-c87bb547da44"
+            ]
+          }
+        },
+        {
+          "id": "fccdf9f9-49c6-4c15-ba17-78ae18f30b15",
+          "data": {
+            "gender": "M",
+            "first name": "Győri Tamás",
+            "last name": "",
+            "birthday": "1956.09.21"
+          },
+          "rels": {
+            "father": "a16ba058-f1b2-4ff4-b26e-c87bb547da44",
+            "mother": "d43e4985-30c2-42a0-aa1c-1d4c00be5060",
+            "spouses": [
+              "baefcbf8-c341-4692-af4d-a0f5ececd50a"
+            ],
+            "children": [
+              "551e3aa2-a0af-45c7-a5ed-dc701bda50d6"
+            ]
+          }
+        },
+        {
+          "id": "baefcbf8-c341-4692-af4d-a0f5ececd50a",
+          "data": {
+            "gender": "F",
+            "first name": "Kiss Ildikó",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "fccdf9f9-49c6-4c15-ba17-78ae18f30b15"
+            ],
+            "children": [
+              "551e3aa2-a0af-45c7-a5ed-dc701bda50d6"
+            ]
+          }
+        },
+        {
+          "id": "551e3aa2-a0af-45c7-a5ed-dc701bda50d6",
+          "data": {
+            "gender": "M",
+            "first name": "Győri Attila",
+            "last name": "",
+            "birthday": "1979.12.04"
+          },
+          "rels": {
+            "father": "fccdf9f9-49c6-4c15-ba17-78ae18f30b15",
+            "mother": "baefcbf8-c341-4692-af4d-a0f5ececd50a",
+            "spouses": [
+              "afe30c19-9193-4eba-8073-935050d78a62"
+            ],
+            "children": [
+              "97ae157e-6780-4993-ab4f-f18bc8d77a67",
+              "c0eaa389-5b88-42f3-95ef-8d1f17baee82"
+            ]
+          }
+        },
+        {
+          "id": "afe30c19-9193-4eba-8073-935050d78a62",
+          "data": {
+            "gender": "F",
+            "first name": "Havasi Luca",
+            "last name": "",
+            "birthday": "1979.04.03"
+          },
+          "rels": {
+            "spouses": [
+              "551e3aa2-a0af-45c7-a5ed-dc701bda50d6"
+            ],
+            "children": [
+              "97ae157e-6780-4993-ab4f-f18bc8d77a67",
+              "c0eaa389-5b88-42f3-95ef-8d1f17baee82"
+            ]
+          }
+        },
+        {
+          "id": "97ae157e-6780-4993-ab4f-f18bc8d77a67",
+          "data": {
+            "gender": "F",
+            "first name": "Győri Loretta",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "551e3aa2-a0af-45c7-a5ed-dc701bda50d6",
+            "mother": "afe30c19-9193-4eba-8073-935050d78a62"
+          }
+        },
+        {
+          "id": "c0eaa389-5b88-42f3-95ef-8d1f17baee82",
+          "data": {
+            "gender": "M",
+            "first name": "Győri Edekon Ixion",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "afe30c19-9193-4eba-8073-935050d78a62",
+            "father": "551e3aa2-a0af-45c7-a5ed-dc701bda50d6"
+          }
+        },
+        {
+          "id": "d83ddf15-6f14-4d7f-bdc2-6dc375d9ca86",
+          "data": {
+            "gender": "F",
+            "first name": "Szabó Erika",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "father": "0d1b5411-7bd8-45cc-bd33-829b0551ecb4"
+          }
+        },
+        {
+          "id": "35b07dd7-8e77-4131-a1f5-4fad30d5c9ea",
+          "data": {
+            "gender": "M",
+            "first name": "Batta Dezső",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "spouses": [
+              "aa738b12-141b-44b6-8f91-1228d17d4a09"
+            ],
+            "children": [
+              "90d2b129-fe6b-47c9-b916-f34a531ef2c4",
+              "d5423b34-5536-4ec3-b615-936831462b98"
+            ]
+          }
+        },
+        {
+          "id": "90d2b129-fe6b-47c9-b916-f34a531ef2c4",
+          "data": {
+            "gender": "M",
+            "first name": "Batta Dezső",
+            "last name": "",
+            "birthday": "1951"
+          },
+          "rels": {
+            "father": "35b07dd7-8e77-4131-a1f5-4fad30d5c9ea",
+            "mother": "aa738b12-141b-44b6-8f91-1228d17d4a09"
+          }
+        },
+        {
+          "id": "d5423b34-5536-4ec3-b615-936831462b98",
+          "data": {
+            "gender": "M",
+            "first name": "Batta László",
+            "last name": "",
+            "birthday": "1953"
+          },
+          "rels": {
+            "mother": "aa738b12-141b-44b6-8f91-1228d17d4a09",
+            "father": "35b07dd7-8e77-4131-a1f5-4fad30d5c9ea"
+          }
+        },
+        {
+          "id": "c9162996-4beb-48f4-9f44-1b5efccb55f1",
+          "data": {
+            "gender": "M",
+            "first name": "Károly",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "aa738b12-141b-44b6-8f91-1228d17d4a09"
+          }
+        },
+        {
+          "id": "a5b192d6-0dde-4f62-bcb8-6b3c6ee20974",
+          "data": {
+            "gender": "F",
+            "first name": "Ildikó",
+            "last name": "",
+            "birthday": ""
+          },
+          "rels": {
+            "mother": "aa738b12-141b-44b6-8f91-1228d17d4a09"
+          }
+        }
+      ]
+    }
+
+  </script>
+</body>
+</html>
+
