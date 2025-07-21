@@ -26,7 +26,7 @@
         .setSortChildrenFunction((a, b) => a.data['birthday'] === b.data['birthday'] ? 0 : a.data['birthday'] > b.data['birthday'] ? 1 : -1)
     
       const f3Card = f3Chart.setCard(f3.CardHtml)
-        .setCardDisplay([["first name"],["birthday","last name"]])
+        .setCardDisplay([["first name"],["last name","birthday"]])
         .setCardDim({})
         .setMiniTree(true)
         .setStyle('imageRect')
